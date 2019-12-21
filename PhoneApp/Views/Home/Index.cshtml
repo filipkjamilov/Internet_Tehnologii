@@ -1,0 +1,11 @@
+﻿@model IEnumerable<PhoneApp.Models.Phone>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach(var item in Model)
+{
+    <div>
+        <h4>@item.name</h4>
+    </div>
+}
