@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PhoneApp.Models.Phone>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .img-responsive {
+    width: auto;
+    height: 250px;
+}
+    .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+    .inline{
+        display:inline
+    }
+</style>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+    <div class="col-lg-3 col-md-6 col-xs-12 table-bordered text-center">
+        <label class="text-danger">@item.name</label>
+        <div class="text-center ">
+            <img src="@item.img" class="img-responsive inline " />
+        </div>
+        <label>Price: @item.price &euro;</label> <br />
+        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-danger"})
+    </div>
+
+
+
+
+
+
+    }
+</div>
+

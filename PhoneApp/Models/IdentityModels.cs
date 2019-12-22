@@ -29,5 +29,7 @@ namespace PhoneApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PhoneApp.Models.Phone> Phones { get; set; }
     }
 }

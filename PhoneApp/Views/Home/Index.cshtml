@@ -3,9 +3,32 @@
     ViewBag.Title = "Home Page";
 }
 
-@foreach(var item in Model)
+        <div class="row" style="margin-top:30px">
+@foreach (var item in Model)
 {
-    <div>
-        <h4>@item.name</h4>
-    </div>
+           
+                <div class="col-sm-12 col-lg-3 col-md-6 " style="width: 24%; height: 300px; margin-bottom: 10px">
+                    <div class="card text-center " style="height: 100%">
+                        <div class="text-center table-bordered " style=" padding:10px">
+                            <label class="text-danger" style="display:block">@item.name</label>
+                            <div style="height: 181px">
+                                <a href="~/Controllers/AccountController/About">
+                                    <img src="@item.img" style="width: auto; height: 90%;" />
+                                </a>
+
+                            </div>
+                            <form >
+                                <button name="id" class="btn btn-danger" style="margin-top: 10px">DETAILS</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+          
+            
+
+
+
 }
+            </div>
+        
+

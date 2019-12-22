@@ -104,3 +104,4 @@ C:\Users\Kjamilov\source\repos\PhoneApp\PhoneApp\obj\Debug\PhoneApp.dll
 C:\Users\Kjamilov\source\repos\PhoneApp\PhoneApp\obj\Debug\PhoneApp.pdb
 C:\Users\Kjamilov\source\repos\PhoneApp\PhoneApp\obj\Debug\PhoneApp.Migrations.InitialCreate.resources
 C:\Users\Kjamilov\source\repos\PhoneApp\PhoneApp\obj\Debug\PhoneApp.csproj.GenerateResource.cache
+C:\Users\Kjamilov\source\repos\PhoneApp\PhoneApp\obj\Debug\PhoneApp.Migrations.change.resources
