@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body style="background-image:url(../../Scripts/images/background.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,15 +17,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Smart Shop", "Index", "Phones", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Add Manufacturer", "Index", "Manufacturer")</li>
+                        <li>@Html.ActionLink("Add Phone", "Create", "Phones", null)</li>
+                        <li>@Html.ActionLink("Add Roles", "AddUserToRole", "Account")</li>
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("showCart", "ShoppingCart")" class="btn-danger" style="color:white">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+                        </a>
+                    </li>
+                    @Html.Partial("_LoginPartial")
+
+                </ul>
             </div>
         </div>
     </div>
@@ -40,5 +52,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("stripe", required: false)
+
 </body>
 </html>

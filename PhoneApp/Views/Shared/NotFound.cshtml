@@ -1,0 +1,19 @@
+﻿
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NotFound</title>
+</head>
+<body>
+    <div>
+        <h2>The page cannot be found. Please check the URL!</h2>
+        <a href="@Url.Action("Edit", "Phones", new { id = Model.id })" class="btn btn-info">Edit Phone</a>
+    </div>
+</body>
+</html>

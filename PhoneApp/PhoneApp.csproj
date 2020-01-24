@@ -46,8 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Stripe.net, Version=34.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.34.16.0\lib\net45\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -168,22 +172,39 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\PhonesController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912211547446_InitialCreate.cs" />
-    <Compile Include="Migrations\201912211547446_InitialCreate.Designer.cs">
-      <DependentUpon>201912211547446_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202001192059318_Total.cs" />
+    <Compile Include="Migrations\202001192059318_Total.Designer.cs">
+      <DependentUpon>202001192059318_Total.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912212255179_change.cs" />
-    <Compile Include="Migrations\201912212255179_change.Designer.cs">
-      <DependentUpon>201912212255179_change.cs</DependentUpon>
+    <Compile Include="Migrations\202001201906229_InitLast.cs" />
+    <Compile Include="Migrations\202001201906229_InitLast.Designer.cs">
+      <DependentUpon>202001201906229_InitLast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001201922484_InitLastt.cs" />
+    <Compile Include="Migrations\202001201922484_InitLastt.Designer.cs">
+      <DependentUpon>202001201922484_InitLastt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001201925191_InitLasttt.cs" />
+    <Compile Include="Migrations\202001201925191_InitLasttt.Designer.cs">
+      <DependentUpon>202001201925191_InitLasttt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddToRoleModel.cs" />
+    <Compile Include="Models\ChargeDTO.cs" />
+    <Compile Include="Models\ChargeViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Manufacturer.cs" />
@@ -253,6 +274,19 @@
     <Content Include="Views\Phones\Details.cshtml" />
     <Content Include="Views\Phones\Edit.cshtml" />
     <Content Include="Views\Phones\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\showCart.cshtml" />
+    <Content Include="Views\Manufacturer\Create.cshtml" />
+    <Content Include="Views\Manufacturer\Delete.cshtml" />
+    <Content Include="Views\Manufacturer\Details.cshtml" />
+    <Content Include="Views\Manufacturer\Edit.cshtml" />
+    <Content Include="Views\Manufacturer\Index.cshtml" />
+    <Content Include="Views\Cart\Create.cshtml" />
+    <Content Include="Views\Cart\OrderStatus.cshtml" />
+    <Content Include="Views\ShoppingCart\TestCheckout.cshtml" />
+    <Content Include="Views\Account\AddUserToRole.cshtml" />
+    <Content Include="Views\test.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,11 +306,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912211547446_InitialCreate.resx">
-      <DependentUpon>201912211547446_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001192059318_Total.resx">
+      <DependentUpon>202001192059318_Total.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912212255179_change.resx">
-      <DependentUpon>201912212255179_change.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001201906229_InitLast.resx">
+      <DependentUpon>202001201906229_InitLast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201922484_InitLastt.resx">
+      <DependentUpon>202001201922484_InitLastt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201925191_InitLasttt.resx">
+      <DependentUpon>202001201925191_InitLasttt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

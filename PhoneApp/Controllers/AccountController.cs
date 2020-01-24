@@ -51,6 +51,29 @@ namespace PhoneApp.Controllers
                 _userManager = value;
             }
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddUserToRole()
+        {
+            var model = new AddToRoleModel();
+            model.roles.Add("Admin");
+            model.roles.Add("User");
+            model.roles.Add("Guest");
+            return View(model);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddUserToRole(AddToRoleModel model)
+        {
+            try { 
+            var user = UserManager.FindByEmail(model.Email);
+            UserManager.AddToRole(user.Id, model.SelectedRole);
+            return RedirectToAction("Index", "Phones");
+            }
+            catch(Exception ex)
+            {
+                return HttpNotFound();
+            }
+        }
 
         //
         // GET: /Account/Login
@@ -79,7 +102,7 @@ namespace PhoneApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Phones");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -163,7 +186,7 @@ namespace PhoneApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Phones");
                 }
                 AddErrors(result);
             }
@@ -392,7 +415,7 @@ namespace PhoneApp.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

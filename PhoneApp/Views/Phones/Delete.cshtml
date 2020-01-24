@@ -4,62 +4,71 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Phone</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.img)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.img)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.review)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.review)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    hr{
+        border: 2px solid lightblue;
+        border-radius: 5px;
+        margin:15px
     }
-</div>
+    .transparent-bg{
+    background: rgba(255, 255, 255, 0.8);
+
+    }
+    .size{
+        font-size:17px;
+        margin:0 0 
+    }
+    @@media only screen and (max-width: 600px) {
+  
+        .test{
+            display:inline-block !important;
+        }
+    }
+    h2{
+        margin-bottom:0;
+        border-radius: 5px;
+    }
+    h3{
+        border-radius: 5px;
+    }
+</style>
+
+
+<div class="container">
+    <h3 class="info alert-danger" style="text-align:center">Security message!</h3>
+    <h2 class="info alert-info" style="text-align:center">Are you sure you want to delete this phone?</h2>
+    <div style="display:inline-flex;width:100%;background-image:url(../../Scripts/images/image.png);background-position: center;background-repeat: no-repeat;background-size: cover;" class="thumbnail test">
+
+        <!--col-lg-3 col-md-6 col-xs-12-->
+        <div style="text-align:center">
+            <img src="@Url.Content(Model.img)" style="max-width: 400px; float:left; ">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger btn-lg" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success btn-lg" })
+                </div>
+            }
+        </div>
+        <div class="thumbnail img-responsive transparent-bg" style="width:100%;text-align:center;padding-top: 18px; ">
+
+            <span class="text-info size">Manufacturer: <b>@Model.manufacturer.name</b></span>
+            <hr />
+            <span class="text-info size">Model: <b>@Model.name</b></span>
+            <hr />
+            <span class="text-info size">Country of the Manufacturer: <b>@Model.manufacturer.country</b></span>
+            <hr />
+            <span class="text-info size">Description: </span><br />
+            <span class="text-info">@Model.description</span>
+            <hr />
+            <span class="text-info size">Likes: <b>@Model.review</b></span>
+            <hr />
+            <span class="text-info size">Price: <b>@Model.price</b> &euro;</span>
+
+
+        </div>
+    </div>
+
