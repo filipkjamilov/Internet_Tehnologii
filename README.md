@@ -1,3 +1,3 @@
 # Internet_Tehnologii
 
-Simple Phone Store application code in C#.
+Simple Phone Store application coded in C#.
